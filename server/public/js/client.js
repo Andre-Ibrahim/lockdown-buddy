@@ -7,12 +7,24 @@ const socket = new WebSocket("ws://localhost:8080");
 
 chatInput.onkeydown = (event) => {
     if (event.key === 'Enter') {
-        chatBody.value += `${username}: ${chatInput.value}\n`
+        const p = document.createElement('p');
+        p.className = 'user-message';
+        p.innerHTML = `${username}: ${chatInput.value}`;
+        chatBody.appendChild(p);
+
         socket.send(chatInput.value);
+
         chatInput.value = "";
     }
 }
 
+socket.onopen = () => {
+    console.log("test");
+}
+
 socket.onmessage = (event) => {
-    chatBody.value += `Lockdown Buddy: ${event.data}\n`
+    const p = document.createElement('p');
+    p.className = 'ai-message';
+    p.innerHTML = `Lockdown Buddy: ${event.data}`;
+    chatBody.appendChild(p);
 }
