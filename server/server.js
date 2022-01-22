@@ -19,6 +19,10 @@ app.set('port', 5000);
 app.get('/', async (req, res) => {
     res.render("home-page");
 });
+// chat page
+app.get('/chat', function(req, res) {
+  res.render('pages/chat');
+});
 
 const server = http.createServer(app);
 
