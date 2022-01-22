@@ -5,6 +5,7 @@ const http = require("http");
 const websocket = require("ws");
 const dotenv = require('dotenv');
 const axios = require('axios');
+const dbConfig = require('./database/db_config');
 
 dotenv.config();
 
@@ -15,13 +16,13 @@ app.use(cors());
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
-app.set('port', 8080);
+app.set('port', 8081);
 
 app.get('/', async (req, res) => {
     res.render("pages/index");
 });
 // chat page
-app.get('/chat', function(req, res) {
+app.get('/chat', async (req, res) => {
   res.render('pages/chat');
 });
 
@@ -29,16 +30,22 @@ const server = http.createServer(app);
 
 const wss = new websocket.WebSocket.Server({ server });
 
-wss.on('connection', (ws, req) => {
+wss.on('connection', async (ws, req) => {
     const username = req.url.split("=")[1];
-    console.log(username);
+
+    const client = await dbConfig.pool.connect();
+    const { rows } = await client.query(`SELECT * FROM users WHERE username='${username}'`);
+    rows.forEach((row) => {
+        ws.send(`user:${row.message}`);
+        ws.send(`ai:${row.response}`);
+    });
 
     ws.on('message', async (message) => {
         const { data } = await axios.get(`http://localhost:5000/predict?message=${message.toString()}`);
-        ws.send(data.toString());
+        ws.send(`ai:${data.toString()}`);
     });
 });
 
-server.listen(8080, () => {
+server.listen(8081, () => {
     console.log(`Server started on port ${server.address().port}`);
 });

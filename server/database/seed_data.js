@@ -1,19 +1,18 @@
 const { pg } = require("pg");
-const pool = require("./DBConfig");
-const userSeedData = require("./seedData/userSeedData");
+const pool = require("./db_config");
+const dbConfig = require('./db_config');
+const userData = require('./seedData/userSeedData');
 
 (async () => {
-    console.log(pool.modules)
-
-    const client = await pool.modules.connect();
+    const client = await dbConfig.pool.connect();
 
     await client.query("Begin");
 
-    for(user of userSeedData.modules){
+    for (const user of userData.userSeedData) {
 
         const sql = `INSERT INTO users (user_id, username, message, response) values 
         (${user.user_id}, '${user.username}', '${user.message}', '${user.response}')`;
-        
+
         await client.query(sql);
     }
 
@@ -21,4 +20,4 @@ const userSeedData = require("./seedData/userSeedData");
 
     client.release();
 
-})().catch(e => console.log(e));
+})();

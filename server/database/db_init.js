@@ -1,16 +1,14 @@
 const { Client } = require('pg');
 const { readFileSync }  = require("fs");
-const { pool } = require('./DBConfig');
+const dbConfig = require('./db_config');
 
 (async () => {
-
-
     const baseDir = `${__dirname}/schemas`;
     const schemas = ['UserSchema.sql'];
     const files =  schemas.map((schema) => `${baseDir}/${schema}`)
-    const client = await pool.connect();
+    const client = await dbConfig.pool.connect();
 
-    client.query("BEGIN");
+    await client.query("BEGIN");
 
     for(const file of files){
         const sql = readFileSync(file).toString();
