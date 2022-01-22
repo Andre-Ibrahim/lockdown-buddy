@@ -17,7 +17,7 @@ app.set('view engine', 'ejs');
 app.set('port', 5000);
 
 app.get('/', async (req, res) => {
-    res.render("home-page");
+    res.render("pages/index");
 });
 // chat page
 app.get('/chat', function(req, res) {
