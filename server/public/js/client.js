@@ -1,8 +1,20 @@
-const broadcastSocket = new WebSocket("ws://localhost:5000");
+const username = window.prompt("Enter your username: ");
 
-broadcastSocket.onmessage = (message) => {
-    console.log(message);
-};
+const chatBody = document.getElementById('chat-body');
+const chatInput = document.getElementById('chat-input');
+
+const socket = new WebSocket("ws://localhost:5000");
+
+chatInput.onkeydown = (event) => {
+    if (event.key === 'Enter') {
+        socket.send(chatInput.value);
+        chatInput.value = "";
+    }
+}
+
+socket.onmessage = (event) => {
+    chatBody.value += `${event.data}\n`
+}
 
 (function() {
 
@@ -187,7 +199,7 @@ broadcastSocket.onmessage = (message) => {
     function getDistance(p1, p2) {
         return Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2);
     }
-    
+
 })();
 
 

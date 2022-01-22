@@ -29,10 +29,8 @@ const server = http.createServer(app);
 const wss = new websocket.WebSocket.Server({ server });
 
 wss.on('connection', (ws, req) => {
-    console.log("connected to websocket")
-
     ws.on('message', (message) => {
-        console.log(message);
+        ws.send(`You said: ${message.toString()}`);
     });
 });
 
