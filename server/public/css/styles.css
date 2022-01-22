@@ -47,14 +47,20 @@ body {
 .user-message {
     text-align: right;
     color: white;
+    margin-bottom: 0;
 }
 
 .user-message-div {
   margin-left: auto;
 }
 
+.ai-message {
+    color: white;
+    margin-bottom: 0;
+}
+
 .center-text {
-  display: flexbox;
+  display: flex;
   width: fit-content;
   justify-content: center;
   align-items: center;
@@ -66,7 +72,7 @@ body {
 }
 .center-text2 {
   width: fit-content;
-  display: flexbox;
+  display: flex;
   justify-content: center;
   align-items: center;
   text-align: left;

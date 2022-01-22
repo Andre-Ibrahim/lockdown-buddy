@@ -9,12 +9,13 @@ const socket = new WebSocket(`ws://localhost:8081?username=${username}`);
 chatInput.onkeydown = (event) => {
     if (event.key === 'Enter') {
         const p = document.createElement('p');
-        const div = document.createElement('div');
-        div.className = 'user-message-div center-text';
-        
         p.className = 'user-message';
         p.innerHTML = `${chatInput.value}`;
+
+        const div = document.createElement('div');
+        div.className = 'user-message-div center-text';
         div.appendChild(p);
+
         chatBody.appendChild(div);
 
         socket.send(chatInput.value);
@@ -28,15 +29,22 @@ socket.onmessage = (event) => {
     if (name === 'user') {
         const p = document.createElement('p');
         p.className = 'user-message';
-        p.innerHTML = `${username}: ${message}`;
-        chatBody.appendChild(p);
+        p.innerHTML = `${message}`;
+
+        const div = document.createElement('div');
+        div.className = 'user-message-div center-text';
+        div.appendChild(p);
+
+        chatBody.appendChild(div);
     } else {
         const p = document.createElement('p');
-        const div = document.createElement('div');
         p.className = 'ai-message';
-        p.innerHTML = `${event.data}`;
+        p.innerHTML = `${message}`;
+
+        const div = document.createElement('div');
         div.className = 'center-text2';
         div.appendChild(p);
+
         chatBody.appendChild(div);
     }
 }
