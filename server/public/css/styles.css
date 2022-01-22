@@ -60,24 +60,24 @@ body {
 }
 
 .center-text {
-  display: flex;
-  width: fit-content;
-  justify-content: center;
-  align-items: center;
-  text-align: right;
+    display: flex;
+    width: fit-content;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
     padding: 10px 20px 15px 15px;
     border-radius: 45px;
     background-color: rgb(67, 67, 182);
-    height: 34px;
+    height: fit-content;
 }
 .center-text2 {
-  width: fit-content;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: left;
+    width: fit-content;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
     padding: 10px 20px 15px 15px;
     border-radius: 45px;
     background-color: rgb(103, 103, 116);
-    height: 34px;
+    height: fit-content;
 }
