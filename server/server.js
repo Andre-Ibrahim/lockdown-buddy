@@ -30,6 +30,9 @@ const server = http.createServer(app);
 const wss = new websocket.WebSocket.Server({ server });
 
 wss.on('connection', (ws, req) => {
+    const username = req.url.split("=")[1];
+    console.log(username);
+
     ws.on('message', async (message) => {
         const { data } = await axios.get(`http://localhost:5000/predict?message=${message.toString()}`);
         ws.send(data.toString());
