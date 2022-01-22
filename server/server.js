@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
-app.set('port', 5000);
+app.set('port', 8080);
 
 app.get('/', async (req, res) => {
     res.render("pages/index");
