@@ -69,6 +69,7 @@ body {
     border-radius: 45px;
     background-color: rgb(67, 67, 182);
     height: fit-content;
+    max-width: 80%;
 }
 .center-text2 {
     width: fit-content;
@@ -80,4 +81,5 @@ body {
     border-radius: 45px;
     background-color: rgb(103, 103, 116);
     height: fit-content;
+    max-width: 80%;
 }
