@@ -21,6 +21,8 @@ chatInput.onkeydown = (event) => {
         socket.send(chatInput.value);
 
         chatInput.value = "";
+
+        chatBody.scrollTop = chatBody.scrollHeight;
     }
 }
 
@@ -47,4 +49,6 @@ socket.onmessage = (event) => {
 
         chatBody.appendChild(div);
     }
+
+    chatBody.scrollTop = chatBody.scrollHeight;
 }

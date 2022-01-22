@@ -33,6 +33,7 @@ body {
     margin-bottom: 20px;
     padding: 10px 20px 15px 15px;
     border-radius: 15px;
+    overflow: scroll;
   }
 .chatlog {
      font: 15px arial, sans-serif, white;
@@ -45,7 +46,7 @@ body {
   }
 
 .user-message {
-    text-align: right;
+    text-align: left;
     color: white;
     margin-bottom: 0;
 }
@@ -70,6 +71,7 @@ body {
     background-color: rgb(67, 67, 182);
     height: fit-content;
     max-width: 80%;
+    margin-bottom: 10px;
 }
 .center-text2 {
     width: fit-content;
@@ -82,4 +84,5 @@ body {
     background-color: rgb(103, 103, 116);
     height: fit-content;
     max-width: 80%;
+    margin-bottom: 10px;
 }
