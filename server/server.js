@@ -24,23 +24,11 @@ const server = http.createServer(app);
 
 const wss = new websocket.WebSocket.Server({ server });
 
-const rooms = {}
-
 wss.on('connection', (ws, req) => {
-    const roomId = req.url.split("=")[1];
-
-    if (rooms[roomId]) {
-        rooms[roomId].push(ws);
-    } else {
-        rooms[roomId] = [ws];
-    }
+    console.log("connected to websocket")
 
     ws.on('message', (message) => {
-        wss.clients.forEach(client => {
-            if (ws !== client && rooms[roomId].includes(client)) {
-                client.send(message.toString());
-            }
-        });
+        console.log(message);
     });
 });
 
