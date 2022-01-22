@@ -1,2 +1,4 @@
 .idea
 server/node_modules
+ml-server/env
+ml-server/db.sqlite3
