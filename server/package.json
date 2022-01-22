@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "animejs": "^3.2.1",
+    "axios": "^0.25.0",
     "chroma-js": "^2.1.2",
     "cors": "^2.8.5",
     "dotenv": "^14.2.0",

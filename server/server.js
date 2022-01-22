@@ -4,6 +4,7 @@ const path = require('path');
 const http = require("http");
 const websocket = require("ws");
 const dotenv = require('dotenv');
+const axios = require('axios');
 
 dotenv.config();
 
@@ -29,11 +30,12 @@ const server = http.createServer(app);
 const wss = new websocket.WebSocket.Server({ server });
 
 wss.on('connection', (ws, req) => {
-    ws.on('message', (message) => {
-        ws.send(`You said: ${message.toString()}`);
+    ws.on('message', async (message) => {
+        const { data } = await axios.get(`http://localhost:5000/predict?message=${message.toString()}`);
+        ws.send(data.toString());
     });
 });
 
-server.listen(5000, () => {
+server.listen(8080, () => {
     console.log(`Server started on port ${server.address().port}`);
 });

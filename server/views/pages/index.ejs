@@ -1,39 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <%- include('../partials/head'); %>
-</head>
-<body class="container">
+    <head>
+      <%- include('../partials/head'); %>
+    </head>
+    <body class="container">
+        <header>
+            <%- include('../partials/header'); %>
+        </header>
+        <main>
+        <div class="jumbotron">
+            <h1>Lockdown Buddy</h1>
+            <p>Start a conversation with your new virtual best friend! </p>
+        </div>
+        </main>
 
-<header>
-  <%- include('../partials/header'); %>
-</header>
+        <footer>
+          <%- include('../partials/footer'); %>
+        </footer>
 
-<main>
-  <div class="jumbotron">
-    <h1>Lockdown Buddy</h1>
-    <p>Start a conversation with your new virtual best friend! </p>
-  </div>
-</main>
-
-<footer>
-  <%- include('../partials/footer'); %>
-</footer>
-<html lang="en" class="no-js">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-		<meta name="viewport" content="width=device-width, initial-scale=1"> 
-		<title>Animated Node Background</title>
-	</head>
-	<body>
-		<div class="container demo-1">
-				<div id="large-header" class="large-header">
-					<canvas id="demo-canvas"></canvas>
-      </div>
-		</div><!-- /container -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/easing/EasePack.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js"></script>
-<script src="/js/client.js"></script>
-</body>
+        <div class="container demo-1">
+            <div id="large-header" class="large-header">
+                <canvas id="demo-canvas"></canvas>
+            </div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/easing/EasePack.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenLite.min.js"></script>
+        <script src="/js/main.js"></script>
+    </body>
 </html>

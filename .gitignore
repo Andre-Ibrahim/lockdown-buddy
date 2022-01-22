@@ -1,2 +1,5 @@
 .idea
 server/node_modules
+ml-server/env
+ml-server/db.*
+ml-server/__pycache__/
