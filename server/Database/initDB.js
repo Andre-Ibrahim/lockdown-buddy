@@ -1,14 +1,26 @@
-const { Pool, Client } = require('pg');
+const { Client } = require('pg');
+const { readFileSync }  = require("fs");
+const { pool } = require('./DBConfig');
 
-const pool = new Pool({
-  user: 'root',
-  host: 'localhost',
-  database: 'bank',
-  password: '',
-  port: 26257,
-});
+(async () => {
 
-pool.query('SELECT * From accounts', (err, res) => {
-    console.log(err, res)
-    pool.end()
-  })
+
+    const baseDir = `${__dirname}/schemas`;
+    const schemas = ['UserSchema.sql'];
+    const files =  schemas.map((schema) => `${baseDir}/${schema}`)
+    const client = await pool.connect();
+
+    client.query("BEGIN");
+
+    for(const file of files){
+        const sql = readFileSync(file).toString();
+        const res = await client.query(sql);
+
+        console.log(res)
+    }
+
+    await client.query("COMMIT");
+
+    client.release();
+
+})();
