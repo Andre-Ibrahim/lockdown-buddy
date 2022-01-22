@@ -33,16 +33,7 @@ body {
     margin-bottom: 20px;
     padding: 10px 20px 15px 15px;
     border-radius: 15px;
-    overflow: scroll;
-  }
-.chatlog {
-     font: 15px arial, sans-serif, white;
-     text-align: right;
-  }
-#chat-input{
-    font: 17px arial, sans-serif;
-    height: 22px;
-    width: 100%;
+    overflow-y: scroll;
   }
 
 .user-message {
