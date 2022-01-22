@@ -1,3 +1,4 @@
+
 const username = window.prompt("Enter your username: ");
 
 const chatBody = document.getElementById('chat-body');
@@ -8,9 +9,13 @@ const socket = new WebSocket(`ws://localhost:8081?username=${username}`);
 chatInput.onkeydown = (event) => {
     if (event.key === 'Enter') {
         const p = document.createElement('p');
+        const div = document.createElement('div');
+        div.className = 'user-message-div center-text';
+        
         p.className = 'user-message';
-        p.innerHTML = `${username}: ${chatInput.value}`;
-        chatBody.appendChild(p);
+        p.innerHTML = `${chatInput.value}`;
+        div.appendChild(p);
+        chatBody.appendChild(div);
 
         socket.send(chatInput.value);
 
@@ -27,8 +32,11 @@ socket.onmessage = (event) => {
         chatBody.appendChild(p);
     } else {
         const p = document.createElement('p');
+        const div = document.createElement('div');
         p.className = 'ai-message';
-        p.innerHTML = `Lockdown Buddy: ${message}`;
-        chatBody.appendChild(p);
+        p.innerHTML = `${event.data}`;
+        div.className = 'center-text2';
+        div.appendChild(p);
+        chatBody.appendChild(div);
     }
 }
