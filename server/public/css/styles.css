@@ -64,7 +64,7 @@ body {
     width: fit-content;
     justify-content: center;
     align-items: center;
-    text-align: right;
+    text-align: left;
     padding: 10px 20px 15px 15px;
     border-radius: 45px;
     background-color: rgb(67, 67, 182);
