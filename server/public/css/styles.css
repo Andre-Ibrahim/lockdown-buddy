@@ -23,6 +23,10 @@ body {
     position: absolute;
   }
 
+#demo-canvas {
+    width: 100%;
+}
+
 #chat-body {
     border-style: solid;
     width: 100%;
