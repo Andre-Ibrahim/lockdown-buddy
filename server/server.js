@@ -36,15 +36,15 @@ wss.on('connection', async (ws, req) => {
     const client = await dbConfig.pool.connect();
     const { rows } = await client.query(`SELECT * FROM users WHERE username='${username}'`);
     rows.forEach((row) => {
-        ws.send(`user:${row.message}`);
-        ws.send(`ai:${row.response}`);
+        ws.send(`user:${unescape(row.message)}`);
+        ws.send(`ai:${unescape(row.response)}`);
     });
 
     ws.on('message', async (message) => {
         const { data } = await axios.get(`http://localhost:5000/predict?message=${message.toString()}`);
         ws.send(`ai:${data.toString()}`);
         const sql = `INSERT INTO users (username, message, response) values 
-        ('${username}', '${message}', '${data}')`;
+        ('${username}', '${escape(message)}', '${escape(data)}')`;
         await client.query(sql);
     });
 });
